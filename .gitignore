@@ -1,5 +1,3 @@
 node_modules/
 dist/
 .env
-tsconfig.json
-.env.example

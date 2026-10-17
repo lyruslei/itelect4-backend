@@ -88,3 +88,5 @@ export type NewClaimApi = Omit<ApiClaim, "id">;
 export type UserDoc = Omit<User, "id"> & { password: string };
 export type ItemDoc = Omit<Item, "id" | "reportedById"> & { reportedById: Types.ObjectId };
 export type NewItemBody = Pick<Item, "title" | "description" | "location" | "status">;
+export type ClaimDoc = Omit<Claim, "id">;
+

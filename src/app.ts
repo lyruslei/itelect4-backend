@@ -1,20 +1,35 @@
+import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import type { Request, Response, NextFunction } from "express";
+import { connectDB } from "./config/db.js";
 import { authRouter } from "./routes/auth.js";
+import { claimsRouter } from "./routes/claims.js";
 import { itemsRouter } from "./routes/items.js";
 
 const app = express();
 
-app.use(cors());
+// SESSION 9: app.use(cors());
+const ALLOWED_ORIGINS = (process.env.CORS_ORIGIN ?? "")
+  .split(",")
+  .map((o) => o.trim())
+  .filter((o) => o !== "");
+app.use(cors({ origin: ALLOWED_ORIGINS }));
+
 app.use(express.json());
+
+app.use(async (_req: Request, _res: Response, next: NextFunction) => {
+  await connectDB();
+  next();
+});
 
 app.get("/api/health", (_req: Request, res: Response) => {
   res.json({ ok: true, db: mongoose.connection.readyState === 1 });
 });
 
 app.use("/api/auth", authRouter);
+app.use("/api/claims", claimsRouter);
 app.use("/api/items", itemsRouter);
 
 app.use((req: Request, res: Response) => {
@@ -41,3 +56,4 @@ app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
 
 export default app;
 export { app };
+

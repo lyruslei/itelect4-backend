@@ -20,7 +20,8 @@ Fill in the fields like this:
   "other" if none of these fit.
 - missingDetails: one to three details the student should add so the
   owner or finder can recognise the item, such as brand, colour,
-  marks, exact place, or time.
+  marks, exact place, or time. Leave it empty ([]) when quality is
+  "complete".
 - quality: "complete" if someone could recognise the item from the
   report, "needs-detail" if one or two details are missing,
   "too-vague" if the item itself is unclear.

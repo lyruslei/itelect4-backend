@@ -31,9 +31,11 @@ export const itemAdviceSchema = z.object({
     .describe("The kind of item the report is about."),
   missingDetails: z
     .array(z.string())
-    .min(1)
     .max(3)
-    .describe("Details to add so the owner or finder can recognise the item."),
+    .describe(
+      "Details to add so the owner or finder can recognise the item. " +
+        "Empty when quality is complete.",
+    ),
   quality: z
     .enum(["complete", "needs-detail", "too-vague"])
     .describe("How useful the report is as written."),

@@ -7,6 +7,7 @@ import { connectDB } from "./config/db.js";
 import { authRouter } from "./routes/auth.js";
 import { claimsRouter } from "./routes/claims.js";
 import { itemsRouter } from "./routes/items.js";
+import { aiRouter } from "./routes/ai.js";
 
 const app = express();
 
@@ -31,6 +32,9 @@ app.get("/api/health", (_req: Request, res: Response) => {
 app.use("/api/auth", authRouter);
 app.use("/api/claims", claimsRouter);
 app.use("/api/items", itemsRouter);
+
+// SESSION 11: private, rate limited, and the only route that talks to Gemini.
+app.use("/api/ai", aiRouter);
 
 app.use((req: Request, res: Response) => {
   res.status(404).json({ message: `No route for ${req.method} ${req.originalUrl}` });

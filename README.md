@@ -55,4 +55,4 @@ GitHub Actions (`.github/workflows/ci.yml`) runs `npm ci`, `npm run typecheck` a
 ## AI-use disclosure
 
 - **In the app:** `POST /api/ai` sends item descriptions to Google Gemini (`@google/genai`) and checks the reply against a Zod schema before returning it.
-- **In development:** I used Claude Code (Anthropic) as a coding assistant to plan and write parts of this project, including the Session 11 AI route and the Session 12 tests and CI. I reviewed, ran and verified every change, and I can explain each part.
+- **In development:** I used AI coding assistants while building this project: Google Antigravity for Sessions 1–10 (GT1–GT4), and Claude Code (Anthropic) for Sessions 11–12 (the Gemini AI route and page, the tests and the CI). I reviewed and tested the changes before merging them.

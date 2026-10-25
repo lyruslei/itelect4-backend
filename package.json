@@ -9,7 +9,8 @@
     "start": "node dist/server.js",
     "seed": "tsx src/seed.ts",
     "try-ai": "tsx src/try-ai.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --reporter=verbose"
   },
   "keywords": [],
   "author": "",
